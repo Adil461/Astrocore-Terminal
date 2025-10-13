@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Astrocore Terminal Fun Pack — 20+ Animated Commands</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<meta
+			name="description"
+			content="20+ fun, animated terminal commands for Windows (WSL/Git Bash/PowerShell). Games, animations, utilities, and entertainment - all copy-paste ready!"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--bg: #0b0f14;
+				--panel: #0f141a;
+				--ink: #e6edf3;
+				--muted: #9aa4b2;
+				--brand: #7c3aed;
+			}
+			html,
+			body {
+				height: 100%;
+			}
+			body {
+				font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+					Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+				background: radial-gradient(
+						1200px 600px at 80% -10%,
+						#1a1033 0%,
+						transparent 60%
+					),
+					radial-gradient(
+						900px 500px at -10% 10%,
+						#07252f 0%,
+						transparent 60%
+					),
+					var(--bg);
+				color: var(--ink);
+			}
+
+			.glass {
+				background: linear-gradient(
+					180deg,
+					rgba(255, 255, 255, 0.06),
+					rgba(255, 255, 255, 0.02)
+				);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.08);
+			}
+			code,
+			pre {
+				font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+					Consolas, "Liberation Mono", "Courier New", monospace;
+			}
+			.kbd {
+				border: 1px solid rgba(255, 255, 255, 0.15);
+				border-bottom-width: 2px;
+				padding: 0.2rem 0.4rem;
+				border-radius: 0.4rem;
+				background: rgba(255, 255, 255, 0.06);
+			}
+			.term-window {
+				border-radius: 18px;
+				border: 1px solid #1e2632;
+				background: #0e141b;
+				box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+				overflow: hidden;
+			}
+			.term-title {
+				background: linear-gradient(180deg, #0f141a, #0b0f14);
+				border-bottom: 1px solid #1b222c;
+			}
+			.dot {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+			}
+			.screen {
+				height: 400px;
+				overflow: auto;
+				padding: 14px 16px;
+				line-height: 1.6;
+				font-size: 14px;
+			}
+			.line {
+				white-space: pre-wrap;
+				word-wrap: break-word;
+			}
+			.muted {
+				color: #9aa4b2;
+			}
+			.path {
+				color: #a7f3d0;
+			}
+			.prompt {
+				color: #7dd3fc;
+			}
+			.cmd {
+				outline: none;
+			}
+			.caret {
+				display: inline-block;
+				width: 9px;
+				height: 1.1em;
+				background: #a1a1aa;
+				vertical-align: -0.2em;
+				animation: blink 1s steps(2, start) infinite;
+			}
+			@keyframes blink {
+				to {
+					opacity: 0;
+				}
+			}
+			.badge {
+				background: #111827;
+				border: 1px solid #1f2937;
+				border-radius: 9999px;
+				padding: 0.2rem 0.6rem;
+				color: #cbd5e1;
+				font-size: 0.75rem;
+				font-weight: 500;
+			}
+			.category-badge {
+				background: #7c3aed;
+				color: white;
+				padding: 0.15rem 0.5rem;
+				border-radius: 6px;
+				font-size: 0.7rem;
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+			.command-card pre {
+				max-height: 300px;
+				overflow: auto;
+				background: rgba(0, 0, 0, 0.2);
+				padding: 1rem;
+				border-radius: 8px;
+				position: relative;
+			}
+			.command-card .copy-btn {
+				position: absolute;
+				top: 0.5rem;
+				right: 0.5rem;
+				background: rgba(255, 255, 255, 0.1);
+				border: none;
+				color: white;
+				padding: 0.25rem 0.5rem;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+			.command-card .copy-btn:hover {
+				background: rgba(255, 255, 255, 0.2);
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Main Content -->
+		<div id="main-content">
+			<header
+				class="border-b border-white/10 bg-white/5 backdrop-blur-sm sticky top-0 z-50"
+			>
+				<div
+					class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between"
+				>
+					<!-- Left: Logo + Title -->
+					<div class="flex items-center gap-3">
+						<!-- GIF Logo -->
+						<div
+							class="flex items-center justify-center w-16 h-16 md:w-20 md:h-20"
+						>
+							<img
+								src="Untitled-video-Made-with-Clipc-unscreen.gif"
+								alt="Logo"
+								class="w-full h-full object-cover"
+								style="background: transparent"
+								onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+							/>
+							<span
+								class="text-4xl"
+								style="
+									display: none;
+									align-items: center;
+									justify-content: center;
+								"
+								>🚀</span
+							>
+						</div>
+						<div>
+							<h1 class="text-lg md:text-xl font-bold text-white">
+								Astrocore Terminal
+							</h1>
+							<p class="text-xs md:text-sm text-slate-400">
+								Play terminal games & ASCII fun
+							</p>
+						</div>
+					</div>
+
+					<!-- Right: Buttons -->
+					<div class="hidden sm:flex items-center gap-3">
+						<a
+							href="https://github.com/adil461"
+							target="_blank"
+							class="flex items-center px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition"
+						>
+							<svg
+								class="w-4 h-4 mr-2"
+								fill="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path d="M12 0C5.37 0 0 5.37..."></path>
+							</svg>
+							GitHub
+						</a>
+						<a
+							href="#commands"
+							class="px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-semibold transition"
+						>
+							Get Started
+						</a>
+					</div>
+
+					<!-- Mobile Menu -->
+					<div class="sm:hidden">
+						<button
+							onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+							class="p-2 rounded-lg hover:bg-white/10"
+						>
+							<svg
+								class="w-6 h-6 text-white"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M4 6h16M4 12h16M4 18h16"
+								/>
+							</svg>
+						</button>
+					</div>
+				</div>
+
+				<!-- Dropdown for mobile -->
+				<div id="mobile-menu" class="sm:hidden hidden px-4 pb-4">
+					<a
+						href="https://github.com/adil461"
+						target="_blank"
+						class="block px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10"
+					>
+						GitHub
+					</a>
+					<a
+						href="#commands"
+						class="block px-3 py-2 mt-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-semibold"
+					>
+						Get Started
+					</a>
+				</div>
+			</header>
+			<header class="max-w-7xl mx-auto px-6 pt-14 pb-10">
+				<div class="text-center">
+					<div
+						class="inline-flex items-center gap-2 rounded-full px-4 py-2 glass text-sm mb-6"
+					>
+						<span class="text-violet-300">🚀 NEW</span>
+						<span class="text-slate-300"
+							>20+ Fun Terminal Commands by Astrocore</span
+						>
+					</div>
+					<h1
+						class="text-5xl sm:text-7xl font-extrabold leading-tight mb-6"
+					>
+						Astrocore Terminal
+						<span class="text-violet-400">Fun Pack</span>
+					</h1>
+					<p class="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+						Copy-paste ready commands for Windows Terminal, WSL, Git
+						Bash & PowerShell. Games, animations, utilities, and
+						pure entertainment!
+					</p>
+					<div class="flex flex-wrap justify-center gap-4">
+						<a
+							href="#commands"
+							class="px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 font-semibold"
+							>Browse Commands</a
+						>
+					</div>
+				</div>
+			</header>
+			<!-- ▶️ Windows .bat Run Instructions (insert after </header>) -->
+			<div class="max-w-7xl mx-auto px-6 mb-8">
+				<div class="glass rounded-2xl p-4 flex items-start gap-4">
+					<div
+						class="badge"
+						style="
+							background: #0b1220;
+							border-color: rgba(124, 58, 237, 0.3);
+						"
+					>
+						💡
+					</div>
+					<div>
+						<div class="font-semibold text-slate-200">
+							To run the games on your computer
+						</div>
+						<div class="text-slate-400 text-sm mt-1">
+							How to Run .bat Files (Windows):
+							<ol
+								class="text-slate-300 mt-2"
+								style="margin-left: 1rem; line-height: 1.5"
+							>
+								<li>
+									<strong>1.</strong> Copy the game code (use
+									the Copy button)
+								</li>
+								<li>
+									<strong>2.</strong> Open Notepad → paste the
+									code → go to <em>File → Save As</em>.
+								</li>
+								<li>
+									<strong>3.</strong> Enter a filename like
+									<code>snake.bat</code>. Set
+									<strong>Save as type:</strong> to
+									<em>All Files</em> and encoding to
+									<em>UTF-8</em>.
+								</li>
+								<li>
+									<strong>4.</strong> Double-click the saved
+									file to run the game. If necessary, use
+									<em>Right-click → Run as administrator</em>.
+								</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<section id="commands" class="max-w-7xl mx-auto px-6 py-12">
+				<h2 class="text-3xl font-bold text-center mb-12">
+					20+ Terminal Commands by Astrocore
+				</h2>
+				<div class="space-y-12">
+					<div class="glass rounded-2xl p-8">
+						<div class="flex items-center gap-3 mb-6">
+							<span class="category-badge">🎮 Fun & Games</span>
+							<h3 class="text-xl font-bold">
+								Entertainment Commands
+							</h3>
+						</div>
+						<div
+							class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+						>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">1</span>
+									<span class="text-slate-400"
+										>— Snake game 🐍 (Save as
+										snake.bat)</span
+									>
+								</div>
+								<pre class="text-green-400">
+@ECHO OFF
+SETLOCAL ENABLEDELAYEDEXPANSION
+IF not "%1" == "" (
+    GOTO :%1
+)
+TITLE Snake
+MODE 30, 22
+FOR /F %%A in ('ECHO prompt $E^| cmd') DO SET "ESC=%%A"
+(CHCP 65001)&gt;NUL
+
+SET "mov[W]=y]-=1"
+SET "mov[A]=x]-=1"
+SET "mov[S]=y]+=1"
+SET "mov[D]=x]+=1"
+SET "snake[bou]=.0;0."
+SET "skin[1]=%ESC%[38;2;105;78;148m▒$%ESC%[38;2;184;20;184m▓"
+SET "skin[2]=%ESC%[38;2;235;180;52m♣$%ESC%[38;2;209;109;38m♥"
+SET "skin[3]=%ESC%[38;2;212;38;61m◙$%ESC%[38;2;222;100;116m◘"
+SET /A "map[width]=30", "map[height]=15", "char[0][x]=d[x]=3","char[0][y]=d[y]=3","snake[mass]=1","pel[x]=0","snake[speed]=16"
+
+CALL :MAKEMAP %map[width]% %map[height]%
+
+SET "exit=ECHO %ESC%[1;1H%disp[kill]%%ESC%[38;2;255;255;255m%ESC%[%map[height]%;1H%ESC%[3BOuch...Press W to Continue&amp;(COPY NUL "%~dpn0.quit")&gt;NUL&amp;EXIT"
+DEL "%~dpn0.quit" 2&gt;NUL
+ECHO %ESC%[?25l%ESC%[38;2;255;255;255mChoose your skin&amp;FOR /L %%Q in (1, 1, 3) DO (
+    ECHO %ESC%[B%ESC%[38;2;255;255;255m[%%Q] !skin[%%Q]:$=!!skin[%%Q]:$=!!skin[%%Q]:$=! 
+)
+(CHOICE /C 123 /N)&gt;NUL
+FOR /F "tokens=1-2 delims=$" %%A in ("!skin[%errorlevel%]!") DO (
+    SET "snake[cha][1]=%%A"&amp;SET "snake[cha][2]=%%B"
+)
+SET "snake[disp]=%ESC%[%char[0][y]%;%char[0][x]%H%ESC%[38;2;184;20;184m%snake[cha][2]%"
+
+:START
+SETLOCAL
+"%~F0" CONTROL &gt; "%temp%\%~n0_signal.txt" | "%~F0" GAME &lt; "%temp%\%~n0_signal.txt"
+ENDLOCAL
+GOTO :START
+
+:GAME
+FOR /L %%# in () DO (
+    SET /P "input="
+    SET /A "frames+=1"
+    IF !pel[x]! EQU 0 (
+        SET /A "pel[x]=!RANDOM! %% (map[width] - 2) + 2","pel[y]=!RANDOM! %% (map[height] - 2) + 2"
+        SET "pel[disp]=%ESC%[!pel[y]!;!pel[x]!H%ESC%[38;2;209;109;38m♥"
+    )
+    FOR /F "tokens=*" %%A in ("!input!") DO (
+        IF not "!input[cur]!" == "!mov[%%A]!" (
+            SET "input[new]=1"
+        )
+        SET "input[cur]=!mov[%%A]!"
+    )
+    (SET /A "1/((((~(0-(frames %% snake[speed]))>>31)&1)&((~((frames %% snake[speed])-0)>>31)&1))|input[new])" 2&gt;NUL) &amp;&amp; (
+        SET /A "d[x]=char[0][x]","d[y]=char[0][y]","d[!input[cur]!","input[new]=0"
+        IF !d[x]! LSS %map[width]% (
+            IF !d[x]! GTR 1 (
+                IF !d[y]! LSS %map[height]% (
+                    IF !d[y]! GTR 1 (
+                        SET "snake[disp]="
+                        SET /A "d[shift][x]=char[0][x]=d[x]","d[shift][y]=char[0][y]=d[y]"
+                        IF "!pel[x]!;!pel[y]!" == "!d[x]!;!d[y]!" (
+                            SET /A "pel[x]=0","snake[mass]+=1"
+                        )
+                        IF !snake[mass]! NEQ 1 (
+                            FOR %%Q in (".!d[x]!;!d[y]!.") DO (
+                                IF not "!snake[bou]!" == "!snake[bou]:%%~Q=!" (
+                                    %exit%
+                                )
+                            )
+                        )
+                        SET "snake[bou]="
+                        FOR /L %%M in (1, 1, !snake[mass]!) DO (
+                            SET "snake[bou]=!snake[bou]!.!char[%%M][x]!;!char[%%M][y]!"
+                            SET /A "d[save][x]=char[%%M][x]","d[save][y]=char[%%M][y]", "char[%%M][x]=d[shift][x]","char[%%M][y]=d[shift][y]", "d[shift][x]=d[save][x]","d[shift][y]=d[save][y]","d[disp]=%%M %% 2"
+                            IF !d[disp]! EQU 0 (
+                                SET "snake[disp]=!snake[disp]!%ESC%[!char[%%M][y]!;!char[%%M][x]!H%ESC%[38;2;105;78;148m%snake[cha][1]%"
+                            ) else (
+                                SET "snake[disp]=!snake[disp]!%ESC%[!char[%%M][y]!;!char[%%M][x]!H%ESC%[38;2;184;20;184m%snake[cha][2]%"
+                            )
+                        )
+                        SET "snake[bou]=!snake[bou]!."
+                    ) else (%exit%)
+                ) else (%exit%)
+            ) else (%exit%)
+        ) else (%exit%)
+    )
+    ECHO %ESC%[2J%ESC%[1;1H%disp[map]%!pel[disp]!!snake[disp]!%ESC%[38;2;255;255;255m%ESC%[%map[height]%;1H%ESC%[BScore : !snake[mass]!%ESC%[1G%ESC%[BUse WASD to move
+)
+
+:MAKEMAP &lt;width&gt; &lt;height&gt;
+SETLOCAL
+SET "disp[border]="
+FOR /L %%W in (1, 1, %1) DO (
+    SET "disp[border]=!disp[border]!█"
+)
+SET /A "width[adj]=%1 - 2","height[adj]=%2 - 1"
+SET "disp[map]=%disp[border]%#%ESC%[B%ESC%[%disp[border]%"
+FOR /L %%H in (2, 1, %height[adj]%) DO (
+    SET "disp[map]=!disp[map]:#=%ESC%[B%ESC%[█%ESC%[%width[adj]%C█#!"
+)
+SET "disp[map]=%disp[map]:#=%"
+ENDLOCAL&amp;SET "disp[map]=%ESC%[38;2;148;194;224m%disp[map]%"&amp;SET "disp[kill]=%ESC%[38;2;41;100;138m%disp[map]:█=X%"
+GOTO :EOF
+
+:CONTROL
+FOR /L %%C in () do (
+    FOR /F "tokens=*" %%A in ('CHOICE /C:WASD /N') DO (
+        IF exist "%~dpn0.quit" (
+            DEL "%~dpn0.quit"
+            EXIT
+        )
+        &lt;NUL SET /P ".=%%A"
+    )
+)
+GOTO :EOF</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">2</span>
+									<span class="text-slate-400"
+										>— Rock Paper Scissors game ✂️ (Save as
+										rps.bat)</span
+									>
+								</div>
+								<pre class="text-green-400">
+@echo off
+title Rock Paper Scissors
+color 0b
+:reset
+cls
+echo Loading...
+set /a load=0
+set /a wait=0
+:loading
+set /a load=%load% +1
+if %load% == 500 goto boot
+if %load% LSS 500 goto loading
+:boot
+echo.
+echo Done.
+:wait
+set /a wait=%wait% +1
+if %wait% LSS 200 goto wait
+cls
+:launch
+echo ---------------------------------------
+echo Rock Paper Scissors -by AidsMildew-
+echo.
+pause
+set /a "wins=0"
+set /a "losses=0"
+set /a "ties=0"
+set "player=Player"
+set "cpu=CPU"
+:main
+cls
+echo ---------------------------------------
+echo Rock Paper Scissors -by AidsMildew-
+echo ---------------------------------------
+echo 1. Play
+echo 2. Change Player Name
+echo 3. Change CPU Name
+echo 4. Exit
+echo.
+set /p main=Enter option:
+if %main%==1 goto play
+if %main%==2 goto playername
+if %main%==3 goto cpuname
+if %main%==4 exit
+goto main
+:playername
+cls
+echo ---------------------------------------
+echo Rock Paper Scissors -by AidsMildew-
+echo ---------------------------------------
+echo Current Player Name: %player%
+echo.
+set /p player=Enter new name:
+goto main
+:cpuname
+cls
+echo ---------------------------------------
+echo Rock Paper Scissors -by AidsMildew-
+echo ---------------------------------------
+echo Current CPU Name: %cpu%
+echo.
+set /p cpu=Enter new name:
+goto main
+:play
+cls
+echo ---------------------------------------
+echo Rock Paper Scissors -by AidsMildew-
+echo ---------------------------------------
+echo Type "menu" to return to main menu.
+echo.
+set /p choice=Enter Rock, Paper, or Scissors:
+if /i %choice%==rock goto rock
+if /i %choice%==paper goto paper
+if /i %choice%==scissors goto scissors
+if /i %choice%==menu goto main
+goto play
+:rock
+set /a cpuchoice=%random% %% 3 +1
+if %cpuchoice%==1 goto tie
+if %cpuchoice%==2 goto lose
+if %cpuchoice%==3 goto win
+:paper
+set /a cpuchoice=%random% %% 3 +1
+if %cpuchoice%==1 goto win
+if %cpuchoice%==2 goto tie
+if %cpuchoice%==3 goto lose
+:scissors
+set /a cpuchoice=%random% %% 3 +1
+if %cpuchoice%==1 goto lose
+if %cpuchoice%==2 goto win
+if %cpuchoice%==3 goto tie
+:win
+set /a wins=%wins%+1
+cls
+echo ---------------------------------------
+echo Rock Paper Scissors -by AidsMildew-
+echo ---------------------------------------
+echo You chose: %choice%
+if %cpuchoice%==1 echo %cpu% chose: Rock
+if %cpuchoice%==2 echo %cpu% chose: Paper
+if %cpuchoice%==3 echo %cpu% chose: Scissors
+echo.
+echo %player% wins!
+echo.
+echo Wins: %wins%
+echo Losses: %losses%
+echo Ties: %ties%
+echo.
+pause
+goto play
+:lose
+set /a losses=%losses%+1
+cls
+echo ---------------------------------------
+echo Rock Paper Scissors -by AidsMildew-
+echo ---------------------------------------
+echo You chose: %choice%
+if %cpuchoice%==1 echo %cpu% chose: Rock
+if %cpuchoice%==2 echo %cpu% chose: Paper
+if %cpuchoice%==3 echo %cpu% chose: Scissors
+echo.
+echo %cpu% wins!
+echo.
+echo Wins: %wins%
+echo Losses: %losses%
+echo Ties: %ties%
+echo.
+pause
+goto play
+:tie
+set /a ties=%ties%+1
+cls
+echo ---------------------------------------
+echo Rock Paper Scissors -by AidsMildew-
+echo ---------------------------------------
+echo You chose: %choice%
+if %cpuchoice%==1 echo %cpu% chose: Rock
+if %cpuchoice%==2 echo %cpu% chose: Paper
+if %cpuchoice%==3 echo %cpu% chose: Scissors
+echo.
+echo It's a tie!
+echo.
+echo Wins: %wins%
+echo Losses: %losses%
+echo Ties: %ties%
+echo.
+pause
+goto play</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">3</span>
+									<span class="text-slate-400"
+										>— Dragon Kill game 🐉 (Save as
+										dragon.bat)</span
+									>
+								</div>
+								<pre class="text-green-400">
+@echo off
+
+:menu
+color 0a
+cls
+echo DRAGON KILL
+echo Choose the number:
+echo 1. Start game
+echo 2. Exit
+set /p menu=
+if '%menu%'=='1' (
+goto sets
+)
+if '%menu%'=='2' (
+exit
+)else goto menu
+:sets
+cls
+set /a money=1000
+set /a health=1000
+set /a potions=0
+set /a damage=2
+set /a dd=5
+set /a dh=25
+set /a moneygain=50
+set /a levels=0
+set /a new=%dh%+5
+:start
+cls
+echo Money:%money%
+echo Health:%health%
+echo Number of healing potions:%potions%
+echo Choose the number:
+echo 1. Venture onward to the dragon
+echo 2. Go to Store
+echo 3. Go to Title screen
+echo 4. Drink heal potion
+set /p choose=
+if '%choose%'=='1' (
+cls
+echo DO NOT HOLD THE ENTER KEY
+pause
+goto fight
+)
+if '%choose%'=='2' (
+goto store
+)
+if '%choose%'=='3' (
+goto menu
+)
+if '%choose%'=='4' (
+goto nextx
+)else goto start
+:fight
+cls
+echo Health:%health%
+echo Dragon's Health:%new%
+echo You have encountered a dragon
+pause
+cls
+echo Press enter to hit the dragon
+set /p hit=
+set /a new=%new%-%damage%
+if %new% LSS 1 (
+goto defeat
+)
+cls
+echo Health:%health%
+echo Dragon's Health:%new%
+echo You have hit the dragon
+echo The dragon lost %damage% health
+pause
+cls
+echo The dragon has hit you!
+set /a health=%health%-%dd%
+if %health% LSS 1 (
+goto defeated
+)
+pause
+cls
+goto fight
+:defeat
+cls
+set /a dh=%dh%+20
+set /a new=%dh%
+set /a money=%money%+15
+set /a levels=%levels%+1
+echo You defeated the dragon and earned $15.
+echo Congratz
+pause
+goto start
+:defeated
+cls
+echo Sorry You died!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+echo RIP
+echo You have killed %levels% dragon
+pause
+goto menu
+:store
+cls
+echo Money:%money%
+echo Welcome to the store!
+echo Choose:
+echo 1.Sword Upgrade	$700
+echo 2.Heal Potion	$30
+echo 3.Leave Store
+set /p again=
+if %again%==1 (
+goto buysword
+)
+if %again%==2 (
+goto buyheal
+)
+if %again%==3 (
+goto start
+)else goto store
+:buysword
+cls
+set /a money=%money%-700
+if %money% LSS 0 (
+echo You cant buy that!
+set /a money=%money%+700
+pause
+goto store
+)else (
+set /a damage=%damage%+4
+echo You have upgraded your sword
+pause
+goto store
+)
+:buyheal
+cls
+set /a money=%money%-30
+if %money% LSS 0 (
+echo You cant buy that!
+set /a money=%money%+30
+pause
+goto store
+)else (
+set /a potions=%potions%+1
+echo You have bought one heal potion
+pause
+goto store
+)
+:nextx
+cls
+if %potions%==0 (
+echo Sorry. You dont have any potions.
+pause
+goto start
+)else (
+set /a health=%health%+15
+set /a potions=%potions%-1
+echo You have used one potion
+pause
+goto start
+)</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">4</span>
+									<span class="text-slate-400"
+										>— Dancing Parrot game 🦜</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/parrot</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">5</span>
+									<span class="text-slate-400"
+										>— Star Wars ASCII movie 🎬</span
+									>
+								</div>
+								<pre class="text-green-400">
+telnet towel.blinkenlights.nl</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">6</span>
+									<span class="text-slate-400"
+										>— Nyan Cat flying game 🌈</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/nyan</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">7</span>
+									<span class="text-slate-400"
+										>— Rick Roll music game 🎶</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/rick</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">8</span>
+									<span class="text-slate-400"
+										>— Spiderman swinging game 🕸️</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/spidyswing</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">9</span>
+									<span class="text-slate-400"
+										>— Batman running game 🦇</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/batman-running</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">10</span>
+									<span class="text-slate-400"
+										>— Spinning donut blackhole simulation
+										🍩</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/donut</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">11</span>
+									<span class="text-slate-400"
+										>— Torus knot universe moving simulation
+										🔵</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/torus-knot</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">12</span>
+									<span class="text-slate-400"
+										>— Clock time simulation ⏰</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/clock</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">13</span>
+									<span class="text-slate-400"
+										>— Forrest running simulation 🌲</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/forrest</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">14</span>
+									<span class="text-slate-400"
+										>— Coin flip simulation 🪙</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/coin</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">15</span>
+									<span class="text-slate-400"
+										>— Knot tying simulation 🔗</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/knot</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">16</span>
+									<span class="text-slate-400"
+										>— DVD screensaver bounce simulation
+										📺</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/dvd</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">17</span>
+									<span class="text-slate-400"
+										>— Playstation boot simulation 🎮</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/playstation</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">18</span>
+									<span class="text-slate-400"
+										>— Batman signal simulation 🦇</span
+									>
+								</div>
+								<pre class="text-green-400">
+curl ascii.live/batman</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">19</span>
+									<span class="text-slate-400"
+										>— Matrix rain universe simulation 💚
+										(Save as matrix.bat)</span
+									>
+								</div>
+								<pre class="text-green-400">
+@echo off
+:start
+echo %random% %random% %random% %random% %random% %random% %random% %random%
+goto start</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+							<div
+								class="command-card glass rounded-xl p-4 relative"
+							>
+								<div class="flex items-center gap-3 mb-2">
+									<span class="badge">20</span>
+									<span class="text-slate-400"
+										>— Starfield universe simulation 🌠
+										(Save as starfield.bat)</span
+									>
+								</div>
+								<pre class="text-green-400">
+@echo off
+setlocal enabledelayedexpansion
+color 0F
+mode con cols=80 lines=25
+
+:loop
+cls
+for /l %%i in (1,1,100) do (
+  set /a x=!random! %% 80 +1
+  set /a bright=!random! %% 3 +1
+  if !bright!==1 (
+    <nul set /p .=*
+  ) else if !bright!==2 (
+    <nul set /p .=+
+  ) else (
+    <nul set /p .=o
+  )
+  for /l %%j in (1,1,!x!) do <nul set /p .= 
+  echo.
+)
+timeout /t 1 /nobreak >nul
+goto loop</pre
+								>
+								<button class="copy-btn">Copy</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="demo" class="max-w-7xl mx-auto px-6 py-12">
+				<div class="text-center mb-8">
+					<h2 class="text-3xl font-bold mb-4">
+						Interactive Terminal Demo by Astrocore
+					</h2>
+					<p class="text-slate-400">
+						Try these commands in the simulated terminal below
+					</p>
+				</div>
+				<div class="grid lg:grid-cols-4 gap-6">
+					<div class="lg:col-span-3 term-window">
+						<div
+							class="term-title px-4 py-3 flex items-center gap-2"
+						>
+							<div class="flex gap-2 mr-2">
+								<div
+									class="dot"
+									style="background: #ff5f57"
+								></div>
+								<div
+									class="dot"
+									style="background: #febc2e"
+								></div>
+								<div
+									class="dot"
+									style="background: #28c840"
+								></div>
+							</div>
+							<div class="text-slate-300 text-sm">
+								Astrocore Terminal Fun Pack — Interactive Demo
+							</div>
+							<div
+								class="ml-auto text-slate-400 text-xs"
+								id="clock"
+							>
+								--:--:--
+							</div>
+						</div>
+						<div
+							id="screen"
+							class="screen"
+							aria-live="polite"
+						></div>
+						<div
+							class="px-4 py-2 border-t border-slate-800 text-slate-400 text-xs"
+						>
+							Type <code>help</code> for available demo commands
+							or click buttons →
+						</div>
+					</div>
+					<div class="glass rounded-2xl p-6">
+						<div class="font-semibold mb-4">
+							🎮 Try Demo Commands
+						</div>
+						<div class="grid grid-cols-2 gap-2 mb-4">
+							<button
+								class="px-3 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-sm"
+								data-demo="snake"
+							>
+								snake
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="rps"
+							>
+								rps
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="dragon"
+							>
+								dragon
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="parrot"
+							>
+								parrot
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="starwars"
+							>
+								starwars
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="nyan"
+							>
+								nyan
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="rick"
+							>
+								rick
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="spidyswing"
+							>
+								spidyswing
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="batmanrun"
+							>
+								batmanrun
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="donut"
+							>
+								donut
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="torusknot"
+							>
+								torusknot
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="clock"
+							>
+								clock
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="forrest"
+							>
+								forrest
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="coin"
+							>
+								coin
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="knot"
+							>
+								knot
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="dvd"
+							>
+								dvd
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="playstation"
+							>
+								playstation
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="batman"
+							>
+								batman
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="matrix"
+							>
+								matrix
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="starfield"
+							>
+								starfield
+							</button>
+							<button
+								class="px-3 py-2 rounded-lg glass text-sm"
+								data-demo="clear"
+							>
+								clear
+							</button>
+						</div>
+						<p class="text-slate-400 text-sm">
+							These are simulated versions. Use the real commands
+							in your terminal for full experience!
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<script>
+				const screenEl = document.getElementById("screen");
+				const clockEl = document.getElementById("clock");
+				const username = "user";
+				const hostname = "terminal-fun";
+
+				function fmtPath() {
+					return "~/fun-pack";
+				}
+				function prompt() {
+					return `<span class="muted">${username}@${hostname}</span> <span class="path">${fmtPath()}</span> <span class="prompt">$ </span>`;
+				}
+				function print(html = "") {
+					const div = document.createElement("div");
+					div.className = "line";
+					div.innerHTML = html;
+					screenEl.appendChild(div);
+					screenEl.scrollTop = screenEl.scrollHeight;
+				}
+				function printText(text = "") {
+					print(
+						text.replace(
+							/[&<>]/g,
+							(c) =>
+								({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c])
+						)
+					);
+				}
+				function newInput() {
+					const line = document.createElement("div");
+					line.className = "line";
+					line.innerHTML = `${prompt()}<span class="cmd" contenteditable spellcheck="false"></span>`;
+					screenEl.appendChild(line);
+					const el = line.querySelector(".cmd");
+					el.focus();
+					el.addEventListener("keydown", onKey);
+					screenEl.scrollTop = screenEl.scrollHeight;
+				}
+
+				const history = [];
+				let hIndex = -1;
+				function onKey(e) {
+					if (e.key === "Enter") {
+						e.preventDefault();
+						const input = e.currentTarget.innerText.trim();
+						e.currentTarget.setAttribute(
+							"contenteditable",
+							"false"
+						);
+						if (input) {
+							history.push(input);
+							hIndex = history.length;
+						}
+						run(input);
+					} else if (e.key === "ArrowUp") {
+						e.preventDefault();
+						if (hIndex > 0) {
+							hIndex--;
+							e.currentTarget.innerText = history[hIndex];
+							caretEnd(e.currentTarget);
+						}
+					} else if (e.key === "ArrowDown") {
+						e.preventDefault();
+						if (hIndex < history.length - 1) {
+							hIndex++;
+							e.currentTarget.innerText = history[hIndex];
+						} else {
+							hIndex = history.length;
+							e.currentTarget.innerText = "";
+						}
+						caretEnd(e.currentTarget);
+					} else if (
+						(e.ctrlKey || e.metaKey) &&
+						e.key.toLowerCase() === "c"
+					) {
+						e.preventDefault();
+						print("^C");
+						newInput();
+					}
+				}
+				function caretEnd(el) {
+					const r = document.createRange();
+					r.selectNodeContents(el);
+					r.collapse(false);
+					const s = window.getSelection();
+					s.removeAllRanges();
+					s.addRange(r);
+				}
+
+				const demo = {
+					help() {
+						printText("🎮 Available demo commands:");
+						printText(
+							" snake, rps, dragon, parrot, starwars, nyan, rick, spidyswing"
+						);
+						printText(
+							" batmanrun, donut, torusknot, clock, forrest, coin, knot, dvd"
+						);
+						printText(
+							" playstation, batman, matrix, starfield, clear, help"
+						);
+						printText("");
+						printText(
+							"💡 Tip: Click the buttons on the right to try them!"
+						);
+					},
+					clear() {
+						screenEl.innerHTML = "";
+					},
+					snake() {
+						printText("🐍 Snake game simulation...");
+						const snake = ["🟢", "🟢", "🟢", "🟢"];
+						const directions = ["→", "↓", "←", "↑"];
+						let dir = 0;
+						let count = 0;
+						const it = setInterval(() => {
+							const spaces = " ".repeat(
+								Math.floor(Math.random() * 50)
+							);
+							print(
+								`${spaces}${snake.join("")} ${
+									directions[dir]
+								} Score: ${count}`
+							);
+							dir = (dir + Math.floor(Math.random() * 2)) % 4;
+							if (++count > 10) {
+								clearInterval(it);
+								printText("🎮 Game Over! High Score: " + count);
+							}
+						}, 300);
+					},
+					rps() {
+						printText("✂️ Rock Paper Scissors simulation...");
+						const choices = ["Rock", "Paper", "Scissors"];
+						const player = choices[Math.floor(Math.random() * 3)];
+						const cpu = choices[Math.floor(Math.random() * 3)];
+						printText(`You chose: ${player}`);
+						printText(`CPU chose: ${cpu}`);
+						if (player === cpu) printText("It's a tie!");
+						else if (
+							(player === "Rock" && cpu === "Scissors") ||
+							(player === "Paper" && cpu === "Rock") ||
+							(player === "Scissors" && cpu === "Paper")
+						)
+							printText("You win!");
+						else printText("CPU wins!");
+					},
+					dragon() {
+						printText("🐉 Dragon Kill simulation...");
+						const health = Math.floor(Math.random() * 1000);
+						const dragonHealth = Math.floor(Math.random() * 500);
+						printText(
+							`Health: ${health} | Dragon Health: ${dragonHealth}`
+						);
+						if (health > 0 && dragonHealth <= 0)
+							printText("You defeated the dragon!");
+						else if (health <= 0) printText("You died!");
+						else printText("Fight continues...");
+					},
+					parrot() {
+						const frames = [
+							"🦜 ",
+							" 🦜 ",
+							" 🦜 ",
+							" 🦜 ",
+							" 🦜 ",
+							" 🦜 ",
+							" 🦜 ",
+							" 🦜 ",
+							" 🦜 ",
+							" 🦜 ",
+						];
+						let i = 0;
+						const it = setInterval(() => {
+							print(
+								`<span style="color:#ff6b6b">${
+									frames[i++ % frames.length]
+								}</span>`
+							);
+							if (i > 30) {
+								clearInterval(it);
+								printText(
+									"🦜 Parrot flew away! Try: curl parrot.live"
+								);
+							}
+						}, 150);
+					},
+					starwars() {
+						printText("🎬 Star Wars ASCII movie simulation...");
+						printText(
+							"Loading Star Wars... (telnet towel.blinkenlights.nl for real experience)"
+						);
+						for (let i = 0; i < 5; i++)
+							printText(
+								"✨ " + " ".repeat(i) + "Star Wars Frame " + i
+							);
+					},
+					nyan() {
+						printText("🌈 Nyan Cat flying simulation...");
+						const frames = ["Nyan!", "Nyan!!", "Nyan!!!"];
+						let i = 0;
+						const it = setInterval(() => {
+							print(
+								`<span style="color:#ff69b4">${
+									frames[i++ % frames.length]
+								}</span>`
+							);
+							if (i > 10) {
+								clearInterval(it);
+								printText(
+									"🌈 Nyan Cat flew away! Try: curl ascii.live/nyan"
+								);
+							}
+						}, 200);
+					},
+					rick() {
+						printText("🎶 Rick Roll simulation...");
+						printText(
+							"Never gonna give you up... 🎵 (Try: curl ascii.live/rick for real music)"
+						);
+					},
+					spidyswing() {
+						printText("🕸️ Spiderman swinging simulation...");
+						const frames = ["🕸️ ", " 🕸️ ", " 🕸️ ", " 🕸️ "];
+						let i = 0;
+						const it = setInterval(() => {
+							print(
+								`<span style="color:#ff4500">${
+									frames[i++ % frames.length]
+								}</span>`
+							);
+							if (i > 10) {
+								clearInterval(it);
+								printText(
+									"🕸️ Spiderman swung away! Try: curl ascii.live/spidyswing"
+								);
+							}
+						}, 200);
+					},
+					batmanrun() {
+						printText("🦇 Batman running simulation...");
+						const frames = ["🦇 ", " 🦇 ", " 🦇 ", " 🦇 "];
+						let i = 0;
+						const it = setInterval(() => {
+							print(
+								`<span style="color:#000080">${
+									frames[i++ % frames.length]
+								}</span>`
+							);
+							if (i > 10) {
+								clearInterval(it);
+								printText(
+									"🦇 Batman ran away! Try: curl ascii.live/batman-running"
+								);
+							}
+						}, 200);
+					},
+					donut() {
+						printText("🍩 Spinning donut blackhole simulation...");
+						printText(
+							"Spinning... (Try: curl ascii.live/donut for real animation)"
+						);
+						for (let i = 0; i < 5; i++)
+							printText("🍩 " + " ".repeat(i));
+					},
+					torusknot() {
+						printText("🔵 Torus knot universe simulation...");
+						printText(
+							"Knot forming... (Try: curl ascii.live/torus-knot for real animation)"
+						);
+						for (let i = 0; i < 5; i++)
+							printText("🔵 " + " ".repeat(i));
+					},
+					clock() {
+						printText("⏰ Clock time simulation...");
+						const time = new Date().toLocaleTimeString();
+						printText(
+							`Current time: ${time} (Try: curl ascii.live/clock for real clock)`
+						);
+					},
+					forrest() {
+						printText("🌲 Forrest running simulation...");
+						const frames = ["🌲 ", " 🌲 ", " 🌲 ", " 🌲 "];
+						let i = 0;
+						const it = setInterval(() => {
+							print(
+								`<span style="color:#228b22">${
+									frames[i++ % frames.length]
+								}</span>`
+							);
+							if (i > 10) {
+								clearInterval(it);
+								printText(
+									"🌲 Forrest moved! Try: curl ascii.live/forrest"
+								);
+							}
+						}, 200);
+					},
+					coin() {
+						printText("🪙 Coin flip simulation...");
+						const result = Math.random() > 0.5 ? "Heads" : "Tails";
+						printText(
+							`Flipped: ${result} (Try: curl ascii.live/coin for real flip)`
+						);
+					},
+					knot() {
+						printText("🔗 Knot tying simulation...");
+						printText(
+							"Knotting... (Try: curl ascii.live/knot for real animation)"
+						);
+						for (let i = 0; i < 5; i++)
+							printText("🔗 " + " ".repeat(i));
+					},
+					dvd() {
+						printText("📺 DVD screensaver bounce simulation...");
+						const frames = ["📺 ", " 📺 ", " 📺 ", " 📺 "];
+						let i = 0;
+						const it = setInterval(() => {
+							print(
+								`<span style="color:#ff4500">${
+									frames[i++ % frames.length]
+								}</span>`
+							);
+							if (i > 10) {
+								clearInterval(it);
+								printText(
+									"📺 DVD bounced away! Try: curl ascii.live/dvd"
+								);
+							}
+						}, 200);
+					},
+					playstation() {
+						printText("🎮 Playstation boot simulation...");
+						printText(
+							"Booting... (Try: curl ascii.live/playstation for real boot)"
+						);
+						for (let i = 0; i < 5; i++)
+							printText("🎮 " + " ".repeat(i));
+					},
+					batman() {
+						printText("🦇 Batman signal simulation...");
+						printText(
+							"Signal active... (Try: curl ascii.live/batman for real signal)"
+						);
+						for (let i = 0; i < 5; i++)
+							printText("🦇 " + " ".repeat(i));
+					},
+					matrix() {
+						printText("🟢 Entering the Matrix...");
+						const chars =
+							"01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+						const t = Date.now() + 5000;
+						const it = setInterval(() => {
+							let line = "";
+							for (let i = 0; i < 80; i++) {
+								line +=
+									chars[
+										Math.floor(Math.random() * chars.length)
+									];
+							}
+							print(`<span style="color:lime">${line}</span>`);
+							if (Date.now() > t) {
+								clearInterval(it);
+								printText("Matrix simulation complete.");
+							}
+						}, 80);
+					},
+					starfield() {
+						printText("🌠 Starfield universe simulation...");
+						const stars = ["*", "+", "o"];
+						let count = 0;
+						const it = setInterval(() => {
+							let line = "";
+							for (let i = 0; i < 80; i++) {
+								if (Math.random() > 0.7)
+									line += `<span style="color:#ffffff">${
+										stars[
+											Math.floor(
+												Math.random() * stars.length
+											)
+										]
+									}</span>`;
+								else line += " ";
+							}
+							print(line);
+							if (++count > 15) {
+								clearInterval(it);
+								printText("🌠 Starfield faded!");
+							}
+						}, 200);
+					},
+				};
+
+				function run(input) {
+					const [cmd, ...rest] = input.split(/\s+/);
+					if (!cmd) {
+						newInput();
+						return;
+					}
+					const fn = demo[cmd];
+					if (!fn) {
+						printText(`command not found: ${cmd}`);
+						printText('Type "help" to see available commands');
+						newInput();
+						return;
+					}
+					try {
+						fn(...rest);
+					} catch (e) {
+						printText("error: " + e.message);
+					}
+					setTimeout(newInput, 100);
+				}
+
+				function boot() {
+					print(
+						`<span style="color:#7c3aed">╔══════════════════════════════════════╗</span>`
+					);
+					print(
+						`<span style="color:#7c3aed">║ Astrocore Terminal Fun Pack v2.0 ║</span>`
+					);
+					print(
+						`<span style="color:#7c3aed">║ 20+ Commands Ready to Rock! 🚀 ║</span>`
+					);
+					print(
+						`<span style="color:#7c3aed">╚══════════════════════════════════════╝</span>`
+					);
+					print("");
+					print(
+						`<span class="muted">Last login:</span> ${new Date().toLocaleString()}`
+					);
+					print(
+						'Type <span style="color:#7c3aed">help</span> to see available demo commands.'
+					);
+					print("");
+					newInput();
+					setInterval(
+						() =>
+							(clockEl.textContent =
+								new Date().toLocaleTimeString()),
+						1000
+					);
+				}
+				boot();
+
+				document.querySelectorAll("[data-demo]").forEach((btn) =>
+					btn.addEventListener("click", () => {
+						const cmd = btn.getAttribute("data-demo");
+						print(`${prompt()}${cmd}`);
+						if (demo[cmd]) {
+							demo[cmd]();
+							setTimeout(newInput, 100);
+						} else {
+							printText("command not found: " + cmd);
+							newInput();
+						}
+					})
+				);
+
+				document.querySelectorAll(".copy-btn").forEach((btn) => {
+					btn.addEventListener("click", () => {
+						const pre = btn.previousElementSibling;
+						navigator.clipboard
+							.writeText(pre.textContent)
+							.then(() => {
+								btn.textContent = "Copied!";
+								setTimeout(
+									() => (btn.textContent = "Copy"),
+									2000
+								);
+							});
+					});
+				});
+			</script>
+			<!-- ✅ Astrocore Learning Footer -->
+			<footer
+				class="bg-white/5 backdrop-blur-sm border-t border-white/10 mt-16"
+			>
+				<div class="max-w-7xl mx-auto px-4 py-12">
+					<!-- Brand Section -->
+					<div class="flex justify-center">
+						<div class="text-center max-w-md">
+							<!-- Logo + Title -->
+							<div
+								class="flex items-center justify-center gap-3 mb-4"
+							>
+								<div
+									class="flex items-center justify-center w-16 h-16 md:w-20 md:h-20"
+								>
+									<img
+										src="Untitled-video-Made-with-Clipc-unscreen.gif"
+										alt="Logo"
+										class="w-full h-full object-cover"
+										style="background: transparent"
+										onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+									/>
+									<span
+										class="text-4xl"
+										style="
+											display: none;
+											align-items: center;
+											justify-content: center;
+										"
+										>🚀</span
+									>
+								</div>
+								<div>
+									<h3 class="text-lg font-bold text-white">
+										Astrocore Terminal Fun Pack
+									</h3>
+									<p class="text-sm text-slate-400">
+										Play terminal games & ASCII fun
+									</p>
+								</div>
+							</div>
+
+							<!-- Description -->
+							<p class="text-slate-400 mb-4">
+								Dive into the retro world of the Windows
+								terminal with fun batch-file games and ASCII
+								animations. Copy a command, save it as
+								<code>.bat</code>, and double-click to play
+								instantly!
+							</p>
+
+							<!-- Social Icons -->
+							<div class="flex justify-center gap-3">
+								<a
+									href="https://github.com/adil461"
+									target="_blank"
+									class="p-2 rounded-full hover:bg-white/10 transition text-slate-300 hover:text-white"
+								>
+									<i class="fab fa-github text-lg"></i>
+								</a>
+								<a
+									href="https://twitter.com/AstroCore_461"
+									target="_blank"
+									class="p-2 rounded-full hover:bg-white/10 transition text-slate-300 hover:text-white"
+								>
+									<i class="fab fa-twitter text-lg"></i>
+								</a>
+								<a
+									href="https://linkedin.com/in/muhammad-adil-shahbaz-567890249/"
+									target="_blank"
+									class="p-2 rounded-full hover:bg-white/10 transition text-slate-300 hover:text-white"
+								>
+									<i class="fab fa-linkedin text-lg"></i>
+								</a>
+								<a
+									href="mailto:astrocore461@gmail.com"
+									target="_blank"
+									class="p-2 rounded-full hover:bg-white/10 transition text-slate-300 hover:text-white"
+								>
+									<i class="fas fa-envelope text-lg"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Bottom Links -->
+					<div
+						class="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"
+					>
+						<p class="text-sm text-slate-400">
+							© 2025 Astrocore. All rights reserved.
+						</p>
+						<div class="flex gap-6 mt-4 md:mt-0">
+							<a
+								href="#"
+								class="text-sm text-slate-400 hover:text-white transition"
+								>Privacy Policy</a
+							>
+							<a
+								href="#"
+								class="text-sm text-slate-400 hover:text-white transition"
+								>Terms of Service</a
+							>
+							<a
+								href="mailto:adilshahbaz447@gmail.com"
+								class="text-sm text-slate-400 hover:text-white transition"
+								>Contact</a
+							>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<script>
+			// Show splash screen for 4 seconds on every page load
+			window.addEventListener("load", () => {
+				setTimeout(() => {
+					const splash = document.getElementById("splash");
+					const main = document.getElementById("main-content");
+					splash.classList.add("fade-out");
+					setTimeout(() => {
+						splash.style.display = "none";
+						main.classList.remove("hidden");
+					}, 600);
+				}, 4000);
+			});
+		</script>
+	</body>
+</html>
